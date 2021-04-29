@@ -11,7 +11,7 @@ void MainMenuBase()
     ImGui::SetNextWindowPos(ImVec2(0, 0));
     ImGui::SetNextWindowSize(ImVec2(400, 600));
     ImGui::PushStyleColor(ImGuiCol_WindowBg, Black);
-    if (ImGui::Begin("MenuWindow"))
+    if (ImGui::Begin("Object Manager"))
     {
         if (ImGui::Button("Un-Inject"))
             g_running = false;
