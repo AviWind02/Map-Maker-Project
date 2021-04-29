@@ -153,6 +153,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="PedList.h" />
+    <ClInclude Include="PropList.h" />
     <ClInclude Include="src\common.hpp" />
     <ClInclude Include="src\crossmap.hpp" />
     <ClInclude Include="src\detour_hook.hpp" />
@@ -201,6 +203,7 @@
     <ClInclude Include="src\script_hook.hpp" />
     <ClInclude Include="src\script_mgr.hpp" />
     <ClInclude Include="src\vmt_hook.hpp" />
+    <ClInclude Include="VehicleList.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\common.cpp">

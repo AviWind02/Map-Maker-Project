@@ -7,9 +7,6 @@
     <Filter Include="memory">
       <UniqueIdentifier>{DEA8820D-CA4A-ADE3-B305-C1379F463434}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SubMenu">
-      <UniqueIdentifier>{0cd0a54c-8ec4-462d-9e4a-50b10b40efa4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Natives">
       <UniqueIdentifier>{924859d4-1d1b-4772-b56b-b17dce64d55a}</UniqueIdentifier>
     </Filter>
@@ -34,9 +31,6 @@
     <Filter Include="Hooking\Pointer">
       <UniqueIdentifier>{366e445a-bc46-4ac0-b3a9-360a7364e254}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Hooking\Main">
-      <UniqueIdentifier>{dc4c1b8b-1ff7-48c1-96bf-e72462f5eef7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UI\font">
       <UniqueIdentifier>{6ff8cbfb-104d-4bba-9fe1-d0eea7c1c77b}</UniqueIdentifier>
     </Filter>
@@ -45,6 +39,15 @@
     </Filter>
     <Filter Include="common">
       <UniqueIdentifier>{fe00f579-a106-4bd2-9735-d3c01f9a2a06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{dc4c1b8b-1ff7-48c1-96bf-e72462f5eef7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ObjectManager">
+      <UniqueIdentifier>{0cd0a54c-8ec4-462d-9e4a-50b10b40efa4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ObjectManager\Array List">
+      <UniqueIdentifier>{ae598139-c9ff-4374-adec-2d9a17a5c04c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -178,7 +181,7 @@
       <Filter>Hooking\Pointer</Filter>
     </ClInclude>
     <ClInclude Include="src\logger.hpp">
-      <Filter>Hooking\Main</Filter>
+      <Filter>Main</Filter>
     </ClInclude>
     <ClInclude Include="src\fonts.hpp">
       <Filter>UI\font</Filter>
@@ -191,6 +194,15 @@
     </ClInclude>
     <ClInclude Include="src\function_types.hpp">
       <Filter>Hooking</Filter>
+    </ClInclude>
+    <ClInclude Include="PropList.h">
+      <Filter>ObjectManager\Array List</Filter>
+    </ClInclude>
+    <ClInclude Include="VehicleList.h">
+      <Filter>ObjectManager\Array List</Filter>
+    </ClInclude>
+    <ClInclude Include="PedList.h">
+      <Filter>ObjectManager\Array List</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -210,7 +222,7 @@
       <Filter>memory</Filter>
     </ClCompile>
     <ClCompile Include="src\MainMenu.cpp">
-      <Filter>SubMenu</Filter>
+      <Filter>ObjectManager</Filter>
     </ClCompile>
     <ClCompile Include="src\invoker.cpp">
       <Filter>Natives</Filter>
@@ -249,7 +261,7 @@
       <Filter>Hooking\Pointer</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp">
-      <Filter>Hooking\Main</Filter>
+      <Filter>Main</Filter>
     </ClCompile>
     <ClCompile Include="src\fonts.cpp">
       <Filter>UI\font</Filter>
