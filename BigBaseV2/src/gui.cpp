@@ -13,75 +13,112 @@
 #include "renderer.hpp"
 #include <imgui.h>
 #include <StackWalker.h>
+#include <features.hpp>
+void MainMenuBase();
+ImVec2 add(ImVec2* vectorA, ImVec2* vectorB) {
+	ImVec2 result;
+	result.x = vectorA->x;
+	result.y = vectorA->y;
+	result.x += vectorB->x;
+	result.y += vectorB->y;
+
+	return result;
+}
 namespace big
 {
     bool doFunctionTick;
 
+
 	void gui::dx_init()
 	{
+		auto& style = ImGui::GetStyle();
+		style.WindowPadding = { 10.f, 10.f };
+		style.PopupRounding = 0.f;
+		style.FramePadding = { 8.f, 4.f };
+		style.ItemSpacing = { 10.f, 8.f };
+		style.ItemInnerSpacing = { 6.f, 6.f };
+		style.TouchExtraPadding = { 0.f, 0.f };
+		style.IndentSpacing = 21.f;
+		style.ScrollbarSize = 15.f;
+		style.GrabMinSize = 8.f;
+		style.WindowBorderSize = 1.f;
+		style.ChildBorderSize = 0.f;
+		style.PopupBorderSize = 1.f;
+		style.FrameBorderSize = 0.f;
+		style.TabBorderSize = 0.f;
+		style.WindowRounding = 0.f;
+		style.ChildRounding = 0.f;
+		style.FrameRounding = 0.f;
+		style.ScrollbarRounding = 0.f;
+		style.GrabRounding = 0.f;
+		style.TabRounding = 0.f;
+		style.WindowTitleAlign = { 0.5f, 0.5f };
+		style.ButtonTextAlign = { 0.5f, 0.5f };
+		style.DisplaySafeAreaPadding = { 3.f, 3.f };
 
+		auto& colors = style.Colors;
+		colors[ImGuiCol_Text] = ImVec4(1.00f, 1.00f, 1.00f, 1.00f);
+		colors[ImGuiCol_TextDisabled] = ImVec4(1.00f, 0.90f, 0.19f, 1.00f);
+		colors[ImGuiCol_WindowBg] = ImVec4(0.06f, 0.06f, 0.06f, 1.00f);
+		colors[ImGuiCol_ChildBg] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
+		colors[ImGuiCol_PopupBg] = ImVec4(0.08f, 0.08f, 0.08f, 0.94f);
+		colors[ImGuiCol_Border] = ImVec4(0.30f, 0.30f, 0.30f, 0.50f);
+		colors[ImGuiCol_BorderShadow] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
+		colors[ImGuiCol_FrameBg] = ImVec4(0.21f, 0.21f, 0.21f, 0.54f);
+		colors[ImGuiCol_FrameBgHovered] = ImVec4(0.21f, 0.21f, 0.21f, 0.78f);
+		colors[ImGuiCol_FrameBgActive] = ImVec4(0.28f, 0.27f, 0.27f, 0.54f);
+		colors[ImGuiCol_TitleBg] = ImVec4(0.17f, 0.17f, 0.17f, 1.00f);
+		colors[ImGuiCol_TitleBgActive] = ImVec4(0.19f, 0.19f, 0.19f, 1.00f);
+		colors[ImGuiCol_TitleBgCollapsed] = ImVec4(0.00f, 0.00f, 0.00f, 0.51f);
+		colors[ImGuiCol_MenuBarBg] = ImVec4(0.14f, 0.14f, 0.14f, 1.00f);
+		colors[ImGuiCol_ScrollbarBg] = ImVec4(0.02f, 0.02f, 0.02f, 0.53f);
+		colors[ImGuiCol_ScrollbarGrab] = ImVec4(0.31f, 0.31f, 0.31f, 1.00f);
+		colors[ImGuiCol_ScrollbarGrabHovered] = ImVec4(0.41f, 0.41f, 0.41f, 1.00f);
+		colors[ImGuiCol_ScrollbarGrabActive] = ImVec4(0.51f, 0.51f, 0.51f, 1.00f);
+		colors[ImGuiCol_CheckMark] = ImVec4(1.00f, 1.00f, 1.00f, 1.00f);
+		colors[ImGuiCol_SliderGrab] = ImVec4(0.34f, 0.34f, 0.34f, 1.00f);
+		colors[ImGuiCol_SliderGrabActive] = ImVec4(0.39f, 0.38f, 0.38f, 1.00f);
+		colors[ImGuiCol_Button] = ImVec4(0.41f, 0.41f, 0.41f, 0.74f);
+		colors[ImGuiCol_ButtonHovered] = ImVec4(0.41f, 0.41f, 0.41f, 0.78f);
+		colors[ImGuiCol_ButtonActive] = ImVec4(0.41f, 0.41f, 0.41f, 0.87f);
+		colors[ImGuiCol_Header] = ImVec4(0.37f, 0.37f, 0.37f, 0.31f);
+		colors[ImGuiCol_HeaderHovered] = ImVec4(0.38f, 0.38f, 0.38f, 0.37f);
+		colors[ImGuiCol_HeaderActive] = ImVec4(0.37f, 0.37f, 0.37f, 0.51f);
+		colors[ImGuiCol_Separator] = ImVec4(0.38f, 0.38f, 0.38f, 0.50f);
+		colors[ImGuiCol_SeparatorHovered] = ImVec4(0.46f, 0.46f, 0.46f, 0.50f);
+		colors[ImGuiCol_SeparatorActive] = ImVec4(0.46f, 0.46f, 0.46f, 0.64f);
+		colors[ImGuiCol_ResizeGrip] = ImVec4(0.26f, 0.26f, 0.26f, 1.00f);
+		colors[ImGuiCol_ResizeGripHovered] = ImVec4(0.31f, 0.31f, 0.31f, 1.00f);
+		colors[ImGuiCol_ResizeGripActive] = ImVec4(0.35f, 0.35f, 0.35f, 1.00f);
+		colors[ImGuiCol_Tab] = ImVec4(0.21f, 0.21f, 0.21f, 0.86f);
+		colors[ImGuiCol_TabHovered] = ImVec4(0.27f, 0.27f, 0.27f, 0.86f);
+		colors[ImGuiCol_TabActive] = ImVec4(0.34f, 0.34f, 0.34f, 0.86f);
+		colors[ImGuiCol_TabUnfocused] = ImVec4(0.10f, 0.10f, 0.10f, 0.97f);
+		colors[ImGuiCol_TabUnfocusedActive] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);
+		colors[ImGuiCol_PlotLines] = ImVec4(0.61f, 0.61f, 0.61f, 1.00f);
+		colors[ImGuiCol_PlotLinesHovered] = ImVec4(1.00f, 0.43f, 0.35f, 1.00f);
+		colors[ImGuiCol_PlotHistogram] = ImVec4(0.90f, 0.70f, 0.00f, 1.00f);
+		colors[ImGuiCol_PlotHistogramHovered] = ImVec4(1.00f, 0.60f, 0.00f, 1.00f);
+		colors[ImGuiCol_TextSelectedBg] = ImVec4(0.26f, 0.59f, 0.98f, 0.35f);
+		colors[ImGuiCol_DragDropTarget] = ImVec4(1.00f, 1.00f, 0.00f, 0.90f);
+		colors[ImGuiCol_NavHighlight] = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
+		colors[ImGuiCol_NavWindowingHighlight] = ImVec4(1.00f, 1.00f, 1.00f, 0.70f);
+		colors[ImGuiCol_NavWindowingDimBg] = ImVec4(0.80f, 0.80f, 0.80f, 0.20f);
+		colors[ImGuiCol_ModalWindowDimBg] = ImVec4(0.80f, 0.80f, 0.80f, 0.35f);
 	}
-
-
 	void gui::dx_on_tick()
 	{
-        doFunctionTick = true;//function loops once menu has been opened
+		MainMenuBase();
+
 	}
     void gui::script_on_tick()
     {
         
         if (g_gui.m_opened)
         {
-            //selective disabled
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 12, true); //ControlWeaponWheelUpDown
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 13, true); //ControlWeaponWheelLeftRight
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 14, true); //ControlWeaponWheelNext
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 15, true); //ControlWeaponWheelPrev
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 16, true); //CONTROLSelectNextWeapon
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 17, true); //CONTROLSelectPrevWeapon
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 263, true); //ControlMeleeAttack1
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 264, true); //ControlMeleeAttack2
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 257, true); //ControlAttack2
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 24, true); //ControlAttack
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 25, true); //ControlAim
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 140, true); //ControlMeleeAttackLight
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 141, true); //ControlMeleeAttackHeavy
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 142, true); //ControlMeleeAttackAlternate
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 144, true); //ControlParachuteDeploy
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 145, true); //ControlParachuteDetach
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 81, true); //ControlVehiclePrevRadio
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 82, true); //ControlVehicleRadioWheel
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 332, true); //ControlRadioWheelUpDown
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 333, true); //ControlRadioWheelLeftRight
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 53, true); // ControlWeaponSpecial
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 54, true); // ControlWeaponSpecial2
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 37, true); // CONTROLSelectWeapon
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 56, true); // ControlDropWeapon
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 262, true); // ControlNextWeapon
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 261, true); // ControlPrevWeapon
-            // always disabed while open
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 19, true); // ControlCharacterWheel
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 23, true); // ControlEnter
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 27, true); // CControlPhone
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 44, true); // ControlCover
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 45, true); //ControlReload
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 58, true); //ControlThrowGrenade
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 51, true); //ControlContext
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 52, true); // ControlContextSecondary
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 75, true); //ControlVehicleExit
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 80, true); //ControlVehicleCinCam
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 85, true); // ControlVehicleRadioWheel
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 180, true); //
-
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 245, true); //ControlMpTextChatAll
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 246, true); // ControlMpTextChatTeam
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 247, true); // ControlMpTextChatFriends
-            CONTROLS::DISABLE_CONTROL_ACTION(2, 248, true); // ControlMpTextChatCrew
-
-
-            UI::HIDE_HUD_AND_RADAR_THIS_FRAME();
-            //UI::THEFEED_REMOVE_ITEM(UI::THEFEED_GET_FIRST_VISIBLE_DELETE_REMAINING());
-        }
+			if (GetAsyncKeyState(VK_KEY_X))
+				CONTROLS::DISABLE_ALL_CONTROL_ACTIONS(0);
+		}
         
     }
 
@@ -95,4 +132,36 @@ namespace big
 			script::get_current()->yield();
 		}
 	}
+}
+void Text(std::string Text, ImVec4 Colour, ImVec2 Pos, ImFont* font, bool Right)
+{
+	if (font == NULL)
+		font = ImGui::GetDefaultFont();
+
+	ImGui::PushFont(font);
+	if (Right)
+		Pos.x = ImGui::GetCursorPosX() + ImGui::GetColumnWidth() - ImGui::CalcTextSize(StringToChar(Text)).x
+		- ImGui::GetScrollX() - 2 * ImGui::GetStyle().ItemSpacing.x;
+
+	ImGui::GetCurrentWindow()->DrawList->AddText({ Pos.x, Pos.y }, ImGui::GetColorU32(Colour), Text.c_str());
+	ImGui::PopFont();
+}
+void RectFilled(ImVec4 Colour, ImVec2 Pos, ImVec2 Size, bool Filled )
+{
+	ImVec2 size = ImGui::CalcItemSize(ImVec2(Size.x, Size.y), 0.0f, 0.0f);
+	const ImRect bb(ImVec2(Pos.x, Pos.y), add(&ImVec2(Pos.x, Pos.y), &size));
+
+
+	if (!Filled)
+		ImGui::GetCurrentWindow()->DrawList->AddRect(bb.Max, bb.Min, ImGui::GetColorU32(Colour));
+	else
+		ImGui::GetCurrentWindow()->DrawList->AddRectFilledMultiColor(bb.Max, bb.Min, ImGui::GetColorU32(Colour),
+			ImGui::GetColorU32(Colour), ImGui::GetColorU32(Colour), ImGui::GetColorU32(Colour));
+}
+void Line(ImVec4 Colour, ImVec2 Pos, ImVec2 Size, bool Filled)
+{
+	ImVec2 size = ImGui::CalcItemSize(ImVec2(Size.x, Size.y), 0.0f, 0.0f);
+	const ImRect bb(ImVec2(Pos.x, Pos.y), add(&ImVec2(Pos.x, Pos.y), &size));
+
+	ImGui::GetCurrentWindow()->DrawList->AddLine(bb.Max, bb.Min, ImGui::GetColorU32(Colour), 1.f);
 }

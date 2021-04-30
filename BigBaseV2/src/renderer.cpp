@@ -59,7 +59,7 @@ namespace big
 
 	void renderer::on_present()
 	{
-		if (VK_KEY_X)
+		if (GetAsyncKeyState(VK_KEY_X))
 		{
 			ImGui::GetIO().MouseDrawCursor = true;
 			ImGui::GetIO().ConfigFlags &= ~ImGuiConfigFlags_NoMouse;

@@ -156,6 +156,7 @@
     <ClInclude Include="PedList.h" />
     <ClInclude Include="PropList.h" />
     <ClInclude Include="src\common.hpp" />
+    <ClInclude Include="src\Crosshiar.hpp" />
     <ClInclude Include="src\crossmap.hpp" />
     <ClInclude Include="src\detour_hook.hpp" />
     <ClInclude Include="src\features.hpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="src\hooking.hpp" />
     <ClInclude Include="src\invoker.hpp" />
     <ClInclude Include="src\logger.hpp" />
+    <ClInclude Include="src\Math\Math.hpp" />
     <ClInclude Include="src\memory\all.hpp" />
     <ClInclude Include="src\memory\fwddec.hpp" />
     <ClInclude Include="src\memory\handle.hpp" />
@@ -197,6 +199,7 @@
     <ClInclude Include="src\memory\range.hpp" />
     <ClInclude Include="src\natives.hpp" />
     <ClInclude Include="src\pointers.hpp" />
+    <ClInclude Include="src\Raycast.h" />
     <ClInclude Include="src\renderer.hpp" />
     <ClInclude Include="src\script.hpp" />
     <ClInclude Include="src\script_global.hpp" />
@@ -206,9 +209,11 @@
     <ClInclude Include="VehicleList.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CamMode.cpp" />
     <ClCompile Include="src\common.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Crosshiar.cpp" />
     <ClCompile Include="src\detour_hook.cpp" />
     <ClCompile Include="src\features.cpp" />
     <ClCompile Include="src\fiber_pool.cpp" />
@@ -218,17 +223,20 @@
     <ClCompile Include="src\invoker.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\MainMenu.cpp" />
+    <ClCompile Include="src\Math\Math.cpp" />
     <ClCompile Include="src\memory\module.cpp" />
     <ClCompile Include="src\memory\Offsets.cpp" />
     <ClCompile Include="src\memory\pattern.cpp" />
     <ClCompile Include="src\memory\pattern_batch.cpp" />
     <ClCompile Include="src\memory\range.cpp" />
     <ClCompile Include="src\pointers.cpp" />
+    <ClCompile Include="src\Raycast.cpp" />
     <ClCompile Include="src\renderer.cpp" />
     <ClCompile Include="src\script.cpp" />
     <ClCompile Include="src\script_global.cpp" />
     <ClCompile Include="src\script_hook.cpp" />
     <ClCompile Include="src\script_mgr.cpp" />
+    <ClCompile Include="src\TestLand.cpp" />
     <ClCompile Include="src\vmt_hook.cpp" />
   </ItemGroup>
   <ItemGroup>

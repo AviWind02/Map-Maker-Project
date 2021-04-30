@@ -49,6 +49,12 @@
     <Filter Include="ObjectManager\Array List">
       <UniqueIdentifier>{ae598139-c9ff-4374-adec-2d9a17a5c04c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ObjectManager\FreeCam">
+      <UniqueIdentifier>{09ffb762-e32c-42ce-a184-7d7e7569a69f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{6ee6b345-e514-4f11-bd67-1a49355219a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\gta\array.hpp">
@@ -204,6 +210,15 @@
     <ClInclude Include="PedList.h">
       <Filter>ObjectManager\Array List</Filter>
     </ClInclude>
+    <ClInclude Include="src\Math\Math.hpp">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Raycast.h">
+      <Filter>ObjectManager\FreeCam</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Crosshiar.hpp">
+      <Filter>ObjectManager\FreeCam</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\memory\module.cpp">
@@ -271,6 +286,21 @@
     </ClCompile>
     <ClCompile Include="src\common.cpp">
       <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\Math.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Raycast.cpp">
+      <Filter>ObjectManager\FreeCam</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Crosshiar.cpp">
+      <Filter>ObjectManager\FreeCam</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TestLand.cpp">
+      <Filter>ObjectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CamMode.cpp">
+      <Filter>ObjectManager\FreeCam</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
