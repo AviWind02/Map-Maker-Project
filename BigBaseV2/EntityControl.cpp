@@ -27,7 +27,7 @@ namespace EntityControl
 		Vector3 CameraDirection = rot_to_direction(&CameraRotation);
 		Vector3 Cameracoord = CAM::GET_GAMEPLAY_CAM_COORD();
 
-		Vector3 playerPosition = ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), 1);
+		Vector3 playerPosition = ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), 1);//edit to cam pos or set player near cam
 		float holdPosDistance = (get_distance(&Cameracoord, &playerPosition) + distance);
 		Vector3 holdingPos = add(&Cameracoord, &multiply(&CameraDirection, holdPosDistance));
 
