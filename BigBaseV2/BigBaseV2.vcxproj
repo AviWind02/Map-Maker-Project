@@ -153,6 +153,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CamMode.h" />
+    <ClInclude Include="EntityControl.h" />
     <ClInclude Include="PedList.h" />
     <ClInclude Include="PropList.h" />
     <ClInclude Include="src\common.hpp" />
@@ -210,6 +212,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CamMode.cpp" />
+    <ClCompile Include="EntityControl.cpp" />
     <ClCompile Include="src\common.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

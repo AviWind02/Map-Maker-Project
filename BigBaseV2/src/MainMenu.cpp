@@ -6,6 +6,7 @@
 #include <d3d11.h>
 #include <renderer.hpp>
 #include <features.hpp>
+#include "../CamMode.h"
 using namespace big;
 
 void getEntityAimAt();
@@ -17,6 +18,7 @@ void Test()
         AddLog("Loaded!");
     FirstLoad = true;
 }
+bool CamTicked;
 void MainMenuBase()
 {
     Test();
@@ -27,8 +29,23 @@ void MainMenuBase()
     ImGui::PushStyleColor(ImGuiCol_WindowBg, Black);
     if (ImGui::Begin("Object-Manager"))
     {
+        if (CamTicked)
+        {
+            CamMode::controlTick();
+            lockcontrols();
+        }
         if (ImGui::Button("Un-Inject"))
             g_running = false;
+        if (ImGui::Button("CamTick"))
+        {
+            CamMode::Tick();
+            CamTicked = true;
+        }
+        if (ImGui::Button("Stop CamTick"))
+        {
+            CamMode::stopTick();
+            CamTicked = false;
+        }
     }
     ImGui::PopStyleColor();
     ImGui::End();

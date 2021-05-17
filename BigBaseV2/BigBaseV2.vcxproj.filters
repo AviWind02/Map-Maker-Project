@@ -55,6 +55,9 @@
     <Filter Include="Math">
       <UniqueIdentifier>{6ee6b345-e514-4f11-bd67-1a49355219a4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ObjectManager\EntityControl">
+      <UniqueIdentifier>{2d50291e-98ce-472a-b166-bbe844797dba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\gta\array.hpp">
@@ -219,6 +222,12 @@
     <ClInclude Include="src\Crosshiar.hpp">
       <Filter>ObjectManager\FreeCam</Filter>
     </ClInclude>
+    <ClInclude Include="CamMode.h">
+      <Filter>ObjectManager\FreeCam</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityControl.h">
+      <Filter>ObjectManager\EntityControl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\memory\module.cpp">
@@ -301,6 +310,9 @@
     </ClCompile>
     <ClCompile Include="CamMode.cpp">
       <Filter>ObjectManager\FreeCam</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityControl.cpp">
+      <Filter>ObjectManager\EntityControl</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
