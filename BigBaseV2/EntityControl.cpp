@@ -41,7 +41,7 @@ namespace EntityControl
 			ENTITY::GET_ENTITY_HEADING(Handle)//yaw
 		};
 		return Rotation;
-	}
+	} 
 	void EditEntityRotation(Entity Handle, Rotation rotation, float rotate)
 	{
 		Vector3 Rotation = {
@@ -62,5 +62,10 @@ namespace EntityControl
 			ENTITY::SET_ENTITY_ROTATION(Handle, Rotation.x, Rotation.y, (Rotation.z + rotate), 2, 1);
 			break;
 		}
+	}
+	void AttachEntityToEntity(Entity fromHandle, Entity toHandle, Vector3 coords, int boneindex)
+	{
+		bool IsPed = ENTITY::IS_ENTITY_A_PED(fromHandle);
+		ENTITY::ATTACH_ENTITY_TO_ENTITY(fromHandle, toHandle, boneindex, coords.x, coords.y, coords.z, NULL, NULL, NULL, NULL, false, true, IsPed, NULL, NULL);
 	}
 }

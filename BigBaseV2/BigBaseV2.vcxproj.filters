@@ -58,6 +58,9 @@
     <Filter Include="ObjectManager\EntityControl">
       <UniqueIdentifier>{2d50291e-98ce-472a-b166-bbe844797dba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ObjectManager\EntityPool">
+      <UniqueIdentifier>{be96de2d-a118-4712-ab68-0a8e239d1855}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\gta\array.hpp">
@@ -228,6 +231,9 @@
     <ClInclude Include="EntityControl.h">
       <Filter>ObjectManager\EntityControl</Filter>
     </ClInclude>
+    <ClInclude Include="src\EntityPool.h">
+      <Filter>ObjectManager\EntityPool</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\memory\module.cpp">
@@ -313,6 +319,9 @@
     </ClCompile>
     <ClCompile Include="EntityControl.cpp">
       <Filter>ObjectManager\EntityControl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EntityPool.cpp">
+      <Filter>ObjectManager\EntityPool</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

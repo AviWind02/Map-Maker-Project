@@ -165,6 +165,7 @@
     <ClInclude Include="src\fiber_pool.hpp" />
     <ClInclude Include="src\fonts.hpp" />
     <ClInclude Include="src\function_types.hpp" />
+    <ClInclude Include="src\EntityPool.h" />
     <ClInclude Include="src\gta\array.hpp" />
     <ClInclude Include="src\gta\base.hpp" />
     <ClInclude Include="src\gta\color.hpp" />
@@ -221,6 +222,7 @@
     <ClCompile Include="src\features.cpp" />
     <ClCompile Include="src\fiber_pool.cpp" />
     <ClCompile Include="src\fonts.cpp" />
+    <ClCompile Include="src\EntityPool.cpp" />
     <ClCompile Include="src\gui.cpp" />
     <ClCompile Include="src\hooking.cpp" />
     <ClCompile Include="src\invoker.cpp" />
