@@ -125,6 +125,7 @@ namespace CamMode
 	using namespace CamScript;
 	void Tick()
 	{
+		AddLog("Cam Mode On");
 		g_fiber_pool->queue_job([] {
 			setCamStat();
 			setCamScript();
@@ -133,6 +134,7 @@ namespace CamMode
 	}
 	void stopTick()
 	{
+		AddLog("Cam Mode Off");
 		g_fiber_pool->queue_job([] {
 			stopCamScript();
 		});

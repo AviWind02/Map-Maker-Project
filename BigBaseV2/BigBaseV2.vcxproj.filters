@@ -234,6 +234,9 @@
     <ClInclude Include="src\EntityPool.h">
       <Filter>ObjectManager\EntityPool</Filter>
     </ClInclude>
+    <ClInclude Include="src\CamUI.h">
+      <Filter>ObjectManager\FreeCam</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\memory\module.cpp">
@@ -322,6 +325,9 @@
     </ClCompile>
     <ClCompile Include="src\EntityPool.cpp">
       <Filter>ObjectManager\EntityPool</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CamUI.cpp">
+      <Filter>ObjectManager\FreeCam</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

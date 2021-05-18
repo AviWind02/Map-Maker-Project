@@ -157,6 +157,7 @@
     <ClInclude Include="EntityControl.h" />
     <ClInclude Include="PedList.h" />
     <ClInclude Include="PropList.h" />
+    <ClInclude Include="src\CamUI.h" />
     <ClInclude Include="src\common.hpp" />
     <ClInclude Include="src\Crosshiar.hpp" />
     <ClInclude Include="src\crossmap.hpp" />
@@ -214,6 +215,7 @@
   <ItemGroup>
     <ClCompile Include="CamMode.cpp" />
     <ClCompile Include="EntityControl.cpp" />
+    <ClCompile Include="src\CamUI.cpp" />
     <ClCompile Include="src\common.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
