@@ -15,13 +15,14 @@ namespace CamScript
 	void setCamScript();
 	void renderCamScript(bool render);
 	void stopCamScript();
+	Vector3 Cameracoord();
 
 	namespace Control
 	{
 		void setCamCoord();
 		void forward();
 		void backward();
-		void TickControls();
+		void Tick();
 	}
 
 	namespace misc

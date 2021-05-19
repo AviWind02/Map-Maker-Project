@@ -314,9 +314,6 @@
     <ClCompile Include="src\Crosshiar.cpp">
       <Filter>ObjectManager\FreeCam</Filter>
     </ClCompile>
-    <ClCompile Include="src\TestLand.cpp">
-      <Filter>ObjectManager</Filter>
-    </ClCompile>
     <ClCompile Include="CamMode.cpp">
       <Filter>ObjectManager\FreeCam</Filter>
     </ClCompile>

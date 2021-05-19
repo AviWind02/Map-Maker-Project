@@ -8,6 +8,8 @@
 #include "./Math/Math.hpp"
 #include "Raycast.h"
 #include "./features.hpp"
+#include "../CamMode.h"
+#include "../EntityControl.h"
 
 using namespace big;
 namespace Cast
@@ -19,9 +21,9 @@ namespace Cast
 
 	void getRay()
 	{
-		Vector3 CamCoord = CAM::GET_GAMEPLAY_CAM_COORD();
-		Vector3 EndOfCamCoord = add(&CAM::GET_GAMEPLAY_CAM_COORD(), &multiply(&rot_to_direction(&CAM::GET_GAMEPLAY_CAM_ROT(0)), 5000.f));
-		int ray = WORLDPROBE::_START_SHAPE_TEST_RAY(CamCoord.x, CamCoord.y, CamCoord.z, EndOfCamCoord.x, EndOfCamCoord.y, EndOfCamCoord.z, -1, PLAYER::PLAYER_PED_ID(), 7);
+		Vector3 CamCoord = CamScript::Cameracoord();
+		Vector3 EndOfCamCoord = add(&CamCoord, &multiply(&rot_to_direction(&CAM::GET_GAMEPLAY_CAM_ROT(0)), 5000.f));
+		int ray = WORLDPROBE::_START_SHAPE_TEST_RAY(CamCoord.x, CamCoord.y, CamCoord.z, EndOfCamCoord.x, EndOfCamCoord.y, EndOfCamCoord.z, -1, CamScript::getCam(), 7);
 		WORLDPROBE::GET_SHAPE_TEST_RESULT(ray, &Hit, &Endcoord, &surfaceNormalcoord, &CastedEntity);
 	}
 
@@ -93,5 +95,23 @@ namespace Cast
 		}
 		return false;
 	}
+
+	bool shouldEntityBeheld()
+	{
+		if (hasRayHit())
+		{
+			if (ENTITY::DOES_ENTITY_EXIST(getCastedEntity()))
+			{
+				if (ENTITY::IS_ENTITY_A_PED(getCastedEntity()) ||
+					ENTITY::IS_ENTITY_AN_OBJECT(getCastedEntity()) ||
+					ENTITY::IS_ENTITY_A_VEHICLE(getCastedEntity()))
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 }
 

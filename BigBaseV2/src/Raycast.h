@@ -9,4 +9,6 @@ namespace Cast
 	bool isEntityHitPed();
 	bool isEntityHitObject();
 	bool isEntityHitVehicle();
+	bool shouldEntityBeheld();//checks is entity is real etc
+
 }

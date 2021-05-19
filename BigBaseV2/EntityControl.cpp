@@ -10,25 +10,23 @@
 #include <Crosshiar.hpp>
 #include "fiber_pool.hpp"
 #include "./features.hpp"
+#include "EntityControl.h"
+#include "CamMode.h"
 
 using namespace big;
 namespace EntityControl
 {
-	enum Rotation
-	{
-		Pitch,
-		Roll,
-		Yaw
-	};
+	bool EntityLocked;
+
 	void holdEntity(Entity Handle, float distance, float Zhight)
 	{
 
 		Vector3 CameraRotation = CAM::GET_GAMEPLAY_CAM_ROT(0);
 		Vector3 CameraDirection = rot_to_direction(&CameraRotation);
-		Vector3 Cameracoord = CAM::GET_GAMEPLAY_CAM_COORD();
+		Vector3 Cameracoord = CamScript::Cameracoord();;
 
 		Vector3 playerPosition = ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), 1);
-		float holdPosDistance = (get_distance(&Cameracoord, &playerPosition) + distance);
+		float holdPosDistance = /*(get_distance(&Cameracoord, &playerPosition)+*/ distance; // );
 		Vector3 holdingPos = add(&Cameracoord, &multiply(&CameraDirection, holdPosDistance));
 
 		ENTITY::SET_ENTITY_COORDS_NO_OFFSET(Handle, holdingPos.x, holdingPos.y, (holdingPos.z + Zhight), 1, 1, 1);

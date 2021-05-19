@@ -19,9 +19,9 @@ int ObjectPool;
 int VehiclePool;
 int PedPool;
 
-const char* ObjectPoolName[];
-const char* VehiclePoolName[];
-const char* PedPoolName[];
+const char* ObjectPoolName[2048];
+const char* VehiclePoolName[2048];
+const char* PedPoolName[2048];
 
 namespace EntityPool
 {

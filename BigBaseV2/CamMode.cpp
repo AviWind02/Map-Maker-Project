@@ -10,6 +10,8 @@
 #include <Crosshiar.hpp>
 #include "fiber_pool.hpp"
 #include "./features.hpp"
+#include "./EntityControl.h"
+
 
 using namespace big;
 namespace EntityControl
@@ -22,7 +24,6 @@ namespace CamScript
 	Player Me;
 	Vector3 CameraRotation;
 	Vector3 Playercoord;
-	Vector3 Cameracoord;
 	Vector3 Cameracoord_Move;
 	void setCamStat()
 	{
@@ -33,6 +34,10 @@ namespace CamScript
 	Cam getCam()
 	{
 		return cam;
+	}
+	Vector3 Cameracoord()
+	{
+		return CAM::GET_CAM_COORD(CamScript::getCam());
 	}
 	void setCamScript()
 	{
@@ -68,7 +73,6 @@ namespace CamScript
 	namespace Control
 	{
 		float Speed;
-
 		void setCamCoord()
 		{
 			Cameracoord_Move = add(&CAM::GET_CAM_COORD(cam), &multiply(&rot_to_direction(&CameraRotation), Speed));
@@ -96,11 +100,27 @@ namespace CamScript
 				setCamCoord();
 			}
 		}
-		void TickControls()
+		void pickUpObject()
+		{
+			if (GetAsyncKeyState(VK_LBUTTON))
+			{
+				if (Cast::shouldEntityBeheld())
+				{
+					EntityControl::holdEntity(Cast::getCastedEntity(), 6.f, 0);
+					EntityControl::EntityLocked = true;
+				}
+			}
+			else
+			{
+				EntityControl::EntityLocked = false;
+			}
+		}
+		void Tick()
 		{
 			forward();
 			backward();
 			setCamRotation();
+			pickUpObject();
 		}
 	}
 
@@ -108,9 +128,8 @@ namespace CamScript
 	{
 		void setPlayerAtCam()
 		{
-			Cameracoord = CAM::GET_CAM_COORD(cam);
 			ENTITY::SET_ENTITY_COORDS(PED::IS_PED_IN_ANY_VEHICLE(Me, 0) ? PED::GET_VEHICLE_PED_IS_IN(Me, false) : Me,
-				Cameracoord.x, Cameracoord.y, Cameracoord.z, 0, 0, 0, 1);
+				Cameracoord().x, Cameracoord().y, Cameracoord().z, 0, 0, 0, 1);
 		}
 		void setFrameHide()
 		{
@@ -142,7 +161,7 @@ namespace CamMode
 	void controlTick()
 	{
 		g_fiber_pool->queue_job([] {
-			Control::TickControls();
+			Control::Tick();
 			misc::setFrameHide();
 		});
 	}

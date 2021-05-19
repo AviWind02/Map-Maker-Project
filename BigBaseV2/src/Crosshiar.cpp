@@ -6,6 +6,8 @@
 #include <d3d11.h>
 #include <renderer.hpp>
 #include "./Math/Math.hpp"
+#include <Raycast.h>
+#include "../EntityControl.h"
 
 using namespace GRAPHICS;
 
@@ -28,6 +30,16 @@ namespace crosshiar
 		DRAW_RECT(0.5f, 0.5f, 0.02f, 0.002f, 255, 0, 0, 255);
 		DRAW_RECT(0.5f, 0.5f, 0.001f, 0.03f, 255, 0, 0, 255);
 	}
+	void Tick()
+	{
+		if (Cast::shouldEntityBeheld())
+			Hit();
+		else
+			Normal();
+
+		if (EntityControl::EntityLocked)
+			Hold();
+	}
 }
 
 namespace Dotbox
@@ -47,5 +59,15 @@ namespace Dotbox
 	{
 		DRAW_RECT(0.5f, 0.5f, 0.004f, 0.008f, 255, 0, 0, 255);
 		DRAW_RECT(0.5f, 0.5f, 0.004f, 0.008f, 255, 0, 0, 255);
+	}
+	void Tick()
+	{
+		if (Cast::shouldEntityBeheld())
+			Hit();
+		else
+			Normal();
+
+		if (EntityControl::EntityLocked)
+			Hold();
 	}
 }

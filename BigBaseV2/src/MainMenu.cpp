@@ -9,7 +9,6 @@
 #include "../CamMode.h"
 using namespace big;
 
-void getEntityAimAt();
 bool FirstLoad;
 
 void Test()
@@ -23,7 +22,6 @@ void MainMenuBase()
 {
     Test();
     DrawLogBox("Log (X to move)");
-    getEntityAimAt();
     ImGui::SetNextWindowPos(ImVec2(0, 0));
     ImGui::SetNextWindowSize(ImVec2(400, 600));
     ImGui::PushStyleColor(ImGuiCol_WindowBg, Black);
@@ -33,7 +31,9 @@ void MainMenuBase()
         {
             CamMode::controlTick();
             lockcontrols();
+            crosshiar::Tick();
         }
+
         if (ImGui::Button("Un-Inject"))
             g_running = false;
         if (ImGui::Button("CamTick"))

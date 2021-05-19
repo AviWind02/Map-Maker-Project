@@ -243,7 +243,6 @@
     <ClCompile Include="src\script_global.cpp" />
     <ClCompile Include="src\script_hook.cpp" />
     <ClCompile Include="src\script_mgr.cpp" />
-    <ClCompile Include="src\TestLand.cpp" />
     <ClCompile Include="src\vmt_hook.cpp" />
   </ItemGroup>
   <ItemGroup>
