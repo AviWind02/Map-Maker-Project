@@ -106,7 +106,7 @@ namespace CamScript
 			{
 				if (Cast::shouldEntityBeheld())
 				{
-					EntityControl::holdEntity(Cast::getCastedEntity(), 6.f, 0);
+					EntityControl::holdEntity(Cast::getCastedEntity(), 6.f, 0.1f);
 					EntityControl::EntityLocked = true;
 				}
 			}
