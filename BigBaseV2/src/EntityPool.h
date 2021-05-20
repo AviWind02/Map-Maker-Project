@@ -1,9 +1,9 @@
 #pragma once
 namespace EntityPool
 {
-	void setObjectPool(const char* prop);
-	void setVehiclePool(const char* prop);
-	void setPedPool(const char* prop);
+	void setObjectPool(const char* prop, Object object);
+	void setVehiclePool(const char* prop, Vehicle vehicle);
+	void setPedPool(const char* prop, Ped ped);
 
 	const char* getObjectPool();
 	const char* getVehiclePool();

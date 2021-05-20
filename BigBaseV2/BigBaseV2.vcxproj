@@ -155,6 +155,7 @@
   <ItemGroup>
     <ClInclude Include="CamMode.h" />
     <ClInclude Include="EntityControl.h" />
+    <ClInclude Include="ObjectCreator.h" />
     <ClInclude Include="PedList.h" />
     <ClInclude Include="PropList.h" />
     <ClInclude Include="src\CamUI.h" />
@@ -215,6 +216,7 @@
   <ItemGroup>
     <ClCompile Include="CamMode.cpp" />
     <ClCompile Include="EntityControl.cpp" />
+    <ClCompile Include="ObjectCreator.cpp" />
     <ClCompile Include="src\CamUI.cpp" />
     <ClCompile Include="src\common.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

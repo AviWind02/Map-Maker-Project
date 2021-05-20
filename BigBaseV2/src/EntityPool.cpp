@@ -23,23 +23,33 @@ const char* ObjectPoolName[2048];
 const char* VehiclePoolName[2048];
 const char* PedPoolName[2048];
 
+Object ObjectSpawned[2048];
+Vehicle VehicleSpawned[2048];
+Ped PedSpawned[2048];
+
 namespace EntityPool
 {
 
-	void setObjectPool(const char* prop)
+	void setObjectPool(const char* prop, Object object)
 	{
 		ObjectPool += 1;
 		ObjectPoolName[ObjectPool] = prop;
+		ObjectSpawned[ObjectPool] = object;
+
 	}
-	void setVehiclePool(const char* prop)
+	void setVehiclePool(const char* prop, Vehicle vehicle)
 	{
 		VehiclePool += 1;
 		VehiclePoolName[VehiclePool] = prop;
+		VehicleSpawned[VehiclePool] = vehicle;
+
 	}
-	void setPedPool(const char* prop)
+	void setPedPool(const char* prop, Ped ped)
 	{
 		PedPool += 1;
 		PedPoolName[PedPool] = prop;
+		PedSpawned[PedPool] = ped;
+
 	}
 	const char* getObjectPool()
 	{

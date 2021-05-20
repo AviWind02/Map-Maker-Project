@@ -11,6 +11,7 @@
 #include "fiber_pool.hpp"
 #include "./features.hpp"
 #include "./EntityControl.h"
+#include "../ObjectSpawner.h"
 
 
 using namespace big;
@@ -95,8 +96,8 @@ namespace CamScript
 		{
 			if (IsKeyDown(VK_KEY_W))
 			{
-				if (IsKeyDown(VK_LSHIFT))
-					Speed = 1.f; else Speed = .5f;
+				IsKeyDown(VK_LSHIFT) ?
+					Speed = 1.f : Speed = .5f;
 				setCamCoord();
 			}
 		}

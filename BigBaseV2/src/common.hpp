@@ -50,7 +50,7 @@
 #include <StackWalker.h>
 
 #include "logger.hpp"
-
+#include "../ObjectSpawner.h"
 namespace big
 {
 	using namespace std::chrono_literals;
