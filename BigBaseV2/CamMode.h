@@ -16,6 +16,7 @@ namespace CamScript
 	void renderCamScript(bool render);
 	void stopCamScript();
 	Vector3 Cameracoord();
+	Vector3 Mycoord();
 
 	namespace Control
 	{

@@ -210,15 +210,6 @@
     <ClInclude Include="src\function_types.hpp">
       <Filter>Hooking</Filter>
     </ClInclude>
-    <ClInclude Include="PropList.h">
-      <Filter>ObjectManager\Array List</Filter>
-    </ClInclude>
-    <ClInclude Include="VehicleList.h">
-      <Filter>ObjectManager\Array List</Filter>
-    </ClInclude>
-    <ClInclude Include="PedList.h">
-      <Filter>ObjectManager\Array List</Filter>
-    </ClInclude>
     <ClInclude Include="src\Math\Math.hpp">
       <Filter>Math</Filter>
     </ClInclude>
@@ -242,6 +233,18 @@
     </ClInclude>
     <ClInclude Include="ObjectCreator.h">
       <Filter>ObjectManager\ObjectCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="PedList.h">
+      <Filter>ObjectManager\Array List</Filter>
+    </ClInclude>
+    <ClInclude Include="PropList.h">
+      <Filter>ObjectManager\Array List</Filter>
+    </ClInclude>
+    <ClInclude Include="VehicleList.h">
+      <Filter>ObjectManager\Array List</Filter>
+    </ClInclude>
+    <ClInclude Include="CamControl.h">
+      <Filter>ObjectManager\FreeCam</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -334,6 +337,9 @@
     </ClCompile>
     <ClCompile Include="ObjectCreator.cpp">
       <Filter>ObjectManager\ObjectCreator</Filter>
+    </ClCompile>
+    <ClCompile Include="CamControl.cpp">
+      <Filter>ObjectManager\FreeCam</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

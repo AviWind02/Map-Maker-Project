@@ -133,20 +133,22 @@ namespace big
 		}
 	}
 }
-void Text(std::string Text, ImVec4 Colour, ImVec2 Pos, ImFont* font, bool Right)
+
+void Text(std::string Text, ImVec4 Colour, ImVec2 Pos, ImFont* font = NULL, bool Right = false)
 {
 	if (font == NULL)
 		font = ImGui::GetDefaultFont();
 
 	ImGui::PushFont(font);
 	if (Right)
-		Pos.x = ImGui::GetCursorPosX() + ImGui::GetColumnWidth() - ImGui::CalcTextSize(StringToChar(Text)).x
-		- ImGui::GetScrollX() - 2 * ImGui::GetStyle().ItemSpacing.x;
+		Pos.x = (ImGui::GetColumnWidth() - ImGui::CalcTextSize(StringToChar(Text)).x
+			- ImGui::GetScrollX() - 2 * ImGui::GetStyle().ItemSpacing.x + Pos.x);
 
-	ImGui::GetCurrentWindow()->DrawList->AddText({ Pos.x, Pos.y }, ImGui::GetColorU32(Colour), Text.c_str());
+	ImGui::GetCurrentWindow()->DrawList->AddText({ Pos.x , Pos.y }, ImGui::GetColorU32(Colour), Text.c_str());
 	ImGui::PopFont();
 }
-void RectFilled(ImVec4 Colour, ImVec2 Pos, ImVec2 Size, bool Filled )
+
+void RectFilled(ImVec4 Colour, ImVec2 Pos, ImVec2 Size, bool Filled = true)
 {
 	ImVec2 size = ImGui::CalcItemSize(ImVec2(Size.x, Size.y), 0.0f, 0.0f);
 	const ImRect bb(ImVec2(Pos.x, Pos.y), add(&ImVec2(Pos.x, Pos.y), &size));
@@ -158,10 +160,39 @@ void RectFilled(ImVec4 Colour, ImVec2 Pos, ImVec2 Size, bool Filled )
 		ImGui::GetCurrentWindow()->DrawList->AddRectFilledMultiColor(bb.Max, bb.Min, ImGui::GetColorU32(Colour),
 			ImGui::GetColorU32(Colour), ImGui::GetColorU32(Colour), ImGui::GetColorU32(Colour));
 }
-void Line(ImVec4 Colour, ImVec2 Pos, ImVec2 Size, bool Filled)
+void Line(ImVec4 Colour, ImVec2 Pos, ImVec2 rotation, float Thinkness = 1.f, bool Filled = false)
 {
-	ImVec2 size = ImGui::CalcItemSize(ImVec2(Size.x, Size.y), 0.0f, 0.0f);
+	ImVec2 size = ImGui::CalcItemSize(ImVec2(rotation.x, rotation.y), 0.0f, 0.0f);
 	const ImRect bb(ImVec2(Pos.x, Pos.y), add(&ImVec2(Pos.x, Pos.y), &size));
 
-	ImGui::GetCurrentWindow()->DrawList->AddLine(bb.Max, bb.Min, ImGui::GetColorU32(Colour), 1.f);
+	ImGui::GetCurrentWindow()->DrawList->AddLine(bb.Max, bb.Min, ImGui::GetColorU32(Colour), Thinkness);
+}
+bool SetDescriptionPos = true;
+void Infobox(std::string text, std::string textRight, short line)
+{
+	if (SetDescriptionPos)
+	{
+		ImGui::SetNextWindowPos(ImVec2(1433, 200));
+		SetDescriptionPos = false;
+	}
+	ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(BlackLowAlpha));
+	ImGui::SetNextWindowSize(ImVec2(433, 600));
+	if (ImGui::Begin("Debug", 0, ImGuiWindowFlags_NoTitleBar))
+	{
+		float YPostion = 20.f * line;
+		ImVec2 TextPos{ ImGui::GetCursorScreenPos().x - 4.f, ImGui::GetCursorScreenPos().y + YPostion };
+		Text(text, White, { TextPos.x + 10.f, TextPos.y } );
+		Text(textRight, White, { TextPos.x, TextPos.y }, NULL, true);
+		Line(WhiteLowAlpha, { TextPos.x, TextPos.y }, ImVec2(400, 0));
+
+	}
+	ImGui::PopStyleColor();
+	ImGui::End();
+}
+std::string RemoveDPoint(float Float, char* text)
+{
+	char NameBuffer[50];
+	sprintf(NameBuffer, "%.4g", Float);
+	std::string nam = NameBuffer;
+	return nam + text;
 }

@@ -23,10 +23,11 @@ namespace big
 
 	inline gui g_gui;
 }
-
-void Line(ImVec4 Colour, ImVec2 Pos, ImVec2 Size, bool Filled = false);
-void RectFilled(ImVec4 Colour, ImVec2 Pos, ImVec2 Size, bool Filled = true);
+void Line(ImVec4 Colour, ImVec2 Pos, ImVec2 rotation, float Thinkness, bool Filled);
+void RectFilled(ImVec4 Colour, ImVec2 Pos, ImVec2 Size, bool Filled);
 void Text(std::string Text, ImVec4 Colour, ImVec2 Pos, ImFont* font, bool Right);
+void Infobox(std::string text, std::string textRight, short line = 0);
+std::string RemoveDPoint(float Float, char* text = "");
 
 static ImVec4 WatermelonRed = ImColor(251, 5, 56, 255);
 static ImVec4 WatermelonPick = ImColor(251, 8, 89, 255);

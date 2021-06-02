@@ -35,13 +35,14 @@ namespace EntityPool
 		ObjectPool += 1;
 		ObjectPoolName[ObjectPool] = prop;
 		ObjectSpawned[ObjectPool] = object;
-
+		
 	}
 	void setVehiclePool(const char* prop, Vehicle vehicle)
 	{
 		VehiclePool += 1;
 		VehiclePoolName[VehiclePool] = prop;
 		VehicleSpawned[VehiclePool] = vehicle;
+	
 
 	}
 	void setPedPool(const char* prop, Ped ped)
@@ -49,7 +50,7 @@ namespace EntityPool
 		PedPool += 1;
 		PedPoolName[PedPool] = prop;
 		PedSpawned[PedPool] = ped;
-
+	
 	}
 	const char* getObjectPool()
 	{
@@ -77,5 +78,9 @@ namespace EntityPool
 	int getPedPoolNum()
 	{
 		return PedPool;
+	}
+	int getTotalPoolNum()
+	{
+		return PedPool + VehiclePool + ObjectPool;
 	}
 }

@@ -7,6 +7,10 @@
 #include <renderer.hpp>
 #include <features.hpp>
 #include "../CamMode.h"
+#include "../ObjectCreator.h"
+#include "./CamUI.h"
+#include "../CamControl.h"
+
 using namespace big;
 
 bool FirstLoad;
@@ -46,6 +50,15 @@ void MainMenuBase()
             CamMode::stopTick();
             CamTicked = false;
         }
+        if (ImGui::Button("Spawn object"))
+            Objectcreator::spawnEntity("prop_windmill_01");
+        if (ImGui::Button("Spawn Vehicle"))
+            Objectcreator::spawnEntity("adder");
+        if (ImGui::Button("Spawn ped"))
+            Objectcreator::spawnEntity("a_c_cat_01");
+
+        CamUI::Tick();
+        ControlWhileHeld::Tick();
     }
     ImGui::PopStyleColor();
     ImGui::End();

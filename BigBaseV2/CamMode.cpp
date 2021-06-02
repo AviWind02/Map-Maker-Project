@@ -12,6 +12,7 @@
 #include "./features.hpp"
 #include "./EntityControl.h"
 #include "../ObjectSpawner.h"
+#include "../CamControl.h"
 
 
 using namespace big;
@@ -39,6 +40,10 @@ namespace CamScript
 	Vector3 Cameracoord()
 	{
 		return CAM::GET_CAM_COORD(CamScript::getCam());
+	}
+	Vector3 Mycoord()
+	{
+		return Playercoord;
 	}
 	void setCamScript()
 	{
@@ -101,27 +106,11 @@ namespace CamScript
 				setCamCoord();
 			}
 		}
-		void pickUpObject()
-		{
-			if (GetAsyncKeyState(VK_LBUTTON))
-			{
-				if (Cast::shouldEntityBeheld())
-				{
-					EntityControl::holdEntity(Cast::getCastedEntity(), 6.f, 0.1f);
-					EntityControl::EntityLocked = true;
-				}
-			}
-			else
-			{
-				EntityControl::EntityLocked = false;
-			}
-		}
 		void Tick()
 		{
 			forward();
 			backward();
 			setCamRotation();
-			pickUpObject();
 		}
 	}
 

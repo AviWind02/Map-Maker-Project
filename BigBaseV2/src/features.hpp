@@ -11,3 +11,4 @@ char* StringToChar(std::string string);
 void AddLog(const char* fmt, ...) IM_PRINTFARGS(2);
 void DrawLogBox(const char* title);
 void lockcontrols();
+

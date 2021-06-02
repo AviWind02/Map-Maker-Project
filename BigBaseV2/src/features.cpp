@@ -23,6 +23,7 @@ namespace big
 		}
 	}
 }
+
 char* StringToChar(std::string string)
 {
 	return _strdup(string.c_str());

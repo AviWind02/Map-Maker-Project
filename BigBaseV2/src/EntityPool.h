@@ -12,4 +12,5 @@ namespace EntityPool
 	int getObjectPoolNum();
 	int getVehiclePoolNum();
 	int getPedPoolNum();
+	int getTotalPoolNum();
 }
