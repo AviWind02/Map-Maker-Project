@@ -27,6 +27,7 @@ void Line(ImVec4 Colour, ImVec2 Pos, ImVec2 rotation, float Thinkness, bool Fill
 void RectFilled(ImVec4 Colour, ImVec2 Pos, ImVec2 Size, bool Filled);
 void Text(std::string Text, ImVec4 Colour, ImVec2 Pos, ImFont* font, bool Right);
 void Infobox(std::string text, std::string textRight, short line = 0);
+void SmallWindow(const char* windowName, std::string text, short line = 0);
 std::string RemoveDPoint(float Float, char* text = "");
 
 static ImVec4 WatermelonRed = ImColor(251, 5, 56, 255);

@@ -17,7 +17,7 @@ using namespace big;
 namespace EntityControl
 {
 	bool EntityLocked;
-
+	float entityDistanceFromCam = 6.f, hightFromCrosshire = .1f;
 	void holdEntity(Entity Handle, float distance, float Zhight)
 	{
 
@@ -65,5 +65,26 @@ namespace EntityControl
 	{
 		bool IsPed = ENTITY::IS_ENTITY_A_PED(fromHandle);
 		ENTITY::ATTACH_ENTITY_TO_ENTITY(fromHandle, toHandle, boneindex, coords.x, coords.y, coords.z, NULL, NULL, NULL, NULL, false, true, IsPed, NULL, NULL);
+	}
+	void Delete(Entity Handle)
+	{
+		g_fiber_pool->queue_job([=] {
+
+			Hash handleHash = ENTITY::GET_ENTITY_MODEL(Handle);
+			if (ENTITY::DOES_ENTITY_EXIST(Handle))
+			{
+				ENTITY::IS_ENTITY_ATTACHED(Handle) ? ENTITY::DETACH_ENTITY(Handle, false, true) : NULL;
+				ENTITY::DELETE_ENTITY(&(int)Handle);
+
+			}
+		});
+	}
+	namespace quickFunction 
+	{
+		void Attach(Entity fromHandle, Entity toHandle, Vector3 coords = {0, 0, 0})
+		{
+
+			AttachEntityToEntity(fromHandle, toHandle, coords, NULL);
+		}
 	}
 }

@@ -189,6 +189,25 @@ void Infobox(std::string text, std::string textRight, short line)
 	ImGui::PopStyleColor();
 	ImGui::End();
 }
+void SmallWindow(const char* windowName, std::string text, short line)
+{
+	if (SetDescriptionPos)
+	{
+		ImGui::SetNextWindowPos(ImVec2(1433, 200));
+		SetDescriptionPos = false;
+	}
+	ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(BlackLowAlpha));
+	ImGui::SetNextWindowSize(ImVec2(433, 600));
+	if (ImGui::Begin(windowName))
+	{
+		float YPostion = 20.f * line;
+		ImVec2 TextPos{ ImGui::GetCursorScreenPos().x - 4.f, ImGui::GetCursorScreenPos().y + YPostion };
+		Text(text, White, { TextPos.x + 10.f, TextPos.y });
+
+	}
+	ImGui::PopStyleColor();
+	ImGui::End();
+}
 std::string RemoveDPoint(float Float, char* text)
 {
 	char NameBuffer[50];

@@ -26,26 +26,44 @@ namespace ControlWhileHeld
 			LockedEntity = Cast::getCastedEntity();
 		
 	}
-
+	Vector3 Rotation;
 	void editEntityRoll()
 	{
-		
+		if (GetAsyncKeyState(VK_LSHIFT))
+			if (GetAsyncKeyState(VK_KEY_A))
+				EntityControl::EditEntityRotation(LockedEntity, EntityControl::Roll, Rotation.x += 1);
+			else
+				Rotation.x = 0;
+
 	}
 	void editEntityPitch()
 	{
-
+		if (GetAsyncKeyState(VK_LSHIFT))
+			if (GetAsyncKeyState(VK_KEY_W))
+				EntityControl::EditEntityRotation(LockedEntity, EntityControl::Pitch, Rotation.y += 1);
+			else
+				Rotation.y = 0;
 	}
 	void editEntityYaw()
 	{
-
+		if (GetAsyncKeyState(VK_LSHIFT))
+			if (GetAsyncKeyState(VK_KEY_S))
+				EntityControl::EditEntityRotation(LockedEntity, EntityControl::Yaw, Rotation.z += 1);
+			else
+				Rotation.z = 0;
 	}
-
 	void deleteEntity()
 	{
-
+		if (GetAsyncKeyState(VK_LSHIFT))
+			if (GetAsyncKeyState(VK_KEY_D))
+				EntityControl::Delete(LockedEntity);
 	}
 	void Tick()
 	{
 		pickUpObject();
+		editEntityRoll();
+		editEntityPitch();
+		editEntityYaw();
+		deleteEntity();
 	}
 }

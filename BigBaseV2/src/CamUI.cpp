@@ -12,6 +12,7 @@
 #include "./features.hpp"
 #include "EntityPool.h"
 #include "../CamControl.h"
+#include "../EntityControl.h"
 
 
 using namespace big;
@@ -99,6 +100,8 @@ namespace CamUI
 		Infobox("Belong to this script:", ENTITY::DOES_ENTITY_BELONG_TO_THIS_SCRIPT(ControlWhileHeld::LockedEntity, true) ? "Yes" : "No", 24);
 		Infobox("Have drawable:", ENTITY::DOES_ENTITY_HAVE_DRAWABLE(ControlWhileHeld::LockedEntity) ? "Yes" : "No", 25);
 		Infobox("Have Physics:", ENTITY::DOES_ENTITY_HAVE_PHYSICS(ControlWhileHeld::LockedEntity) ? "Yes" : "No", 26);
+		Infobox("Distance From Cam(F):", RemoveDPoint(EntityControl::entityDistanceFromCam), 27);
+		Infobox("Hight From crosshire(F):", RemoveDPoint(EntityControl::hightFromCrosshire), 28);
 
 
 	}

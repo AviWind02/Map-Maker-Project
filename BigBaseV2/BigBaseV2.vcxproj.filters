@@ -64,6 +64,9 @@
     <Filter Include="ObjectManager\ObjectCreator">
       <UniqueIdentifier>{01df6251-30f2-4833-8fa5-116ded441575}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ObjectManager\EntityControl\EditEntity">
+      <UniqueIdentifier>{087012ba-0c8f-47c7-aebc-7ddc196ab1b3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\gta\array.hpp">
@@ -246,6 +249,9 @@
     <ClInclude Include="CamControl.h">
       <Filter>ObjectManager\FreeCam</Filter>
     </ClInclude>
+    <ClInclude Include="EditEntity.h">
+      <Filter>ObjectManager\EntityControl\EditEntity</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\memory\module.cpp">
@@ -340,6 +346,9 @@
     </ClCompile>
     <ClCompile Include="CamControl.cpp">
       <Filter>ObjectManager\FreeCam</Filter>
+    </ClCompile>
+    <ClCompile Include="EditEntity.cpp">
+      <Filter>ObjectManager\EntityControl\EditEntity</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

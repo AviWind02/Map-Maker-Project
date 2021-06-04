@@ -10,6 +10,7 @@
 #include "../ObjectCreator.h"
 #include "./CamUI.h"
 #include "../CamControl.h"
+#include "./EntityPool.h"
 
 using namespace big;
 
@@ -59,6 +60,7 @@ void MainMenuBase()
 
         CamUI::Tick();
         ControlWhileHeld::Tick();
+        EntityPool::DevBlock();
     }
     ImGui::PopStyleColor();
     ImGui::End();

@@ -83,4 +83,13 @@ namespace EntityPool
 	{
 		return PedPool + VehiclePool + ObjectPool;
 	}
+	void DevBlock()
+	{
+		for (int i = 0; i < getObjectPoolNum(); i++)
+			SmallWindow("Prop", getObjectPool(), i);
+		for (int i = 0; i < getPedPoolNum(); i++)
+			SmallWindow("Ped", getPedPool(), i);
+		for (int i = 0; i < getVehiclePoolNum(); i++)
+			SmallWindow("Vehicle", getVehiclePool(), i);
+	}
 }

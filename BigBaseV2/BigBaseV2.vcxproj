@@ -155,6 +155,7 @@
   <ItemGroup>
     <ClInclude Include="CamMode.h" />
     <ClInclude Include="CamControl.h" />
+    <ClInclude Include="EditEntity.h" />
     <ClInclude Include="EntityControl.h" />
     <ClInclude Include="ObjectCreator.h" />
     <ClInclude Include="PedList.h" />
@@ -217,6 +218,7 @@
   <ItemGroup>
     <ClCompile Include="CamControl.cpp" />
     <ClCompile Include="CamMode.cpp" />
+    <ClCompile Include="EditEntity.cpp" />
     <ClCompile Include="EntityControl.cpp" />
     <ClCompile Include="ObjectCreator.cpp" />
     <ClCompile Include="src\CamUI.cpp" />
