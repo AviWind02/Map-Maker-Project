@@ -7,5 +7,7 @@ namespace ControlWhileHeld
 	void editEntityPitch();
 	void editEntityYaw();
 	void deleteEntity();
+	extern bool LockMoveControl;
+	bool ctrlDown();
 	void Tick();
 }

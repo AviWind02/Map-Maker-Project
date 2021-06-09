@@ -12,12 +12,15 @@
 #include "./features.hpp"
 #include "EntityControl.h"
 #include "CamMode.h"
+#include "EditEntity.h"
+#include "CamControl.h"
 
 using namespace big;
 namespace EntityControl
 {
 	bool EntityLocked;
 	float entityDistanceFromCam = 6.f, hightFromCrosshire = .1f;
+	bool DeletePhase;
 	void holdEntity(Entity Handle, float distance, float Zhight)
 	{
 
@@ -28,8 +31,8 @@ namespace EntityControl
 		Vector3 playerPosition = ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), 1);
 		float holdPosDistance = /*(get_distance(&Cameracoord, &playerPosition)+*/ distance; // );
 		Vector3 holdingPos = add(&Cameracoord, &multiply(&CameraDirection, holdPosDistance));
-
-		ENTITY::SET_ENTITY_COORDS_NO_OFFSET(Handle, holdingPos.x, holdingPos.y, (holdingPos.z + Zhight), 1, 1, 1);
+		if (!DeletePhase)
+			ENTITY::SET_ENTITY_COORDS_NO_OFFSET(Handle, holdingPos.x, holdingPos.y, (holdingPos.z + Zhight), 1, 1, 1);
 	}
 	Vector3 getRotation(Entity Handle)
 	{
@@ -40,26 +43,25 @@ namespace EntityControl
 		};
 		return Rotation;
 	} 
-	void EditEntityRotation(Entity Handle, Rotation rotation, float rotate)
+
+	void EditEntityRotation(Entity Handle, Rotation rotation)  
 	{
-		Vector3 Rotation = {
-			ENTITY::GET_ENTITY_PITCH(Handle),
-			ENTITY::GET_ENTITY_ROLL(Handle),
-			ENTITY::GET_ENTITY_HEADING(Handle)//yaw
-		};
-	
+		Vector3 Rotation = EntityEdit::getRotation(Handle);
 		switch (rotation)
 		{
 		case Pitch: 
-			ENTITY::SET_ENTITY_ROTATION(Handle, (Rotation.x + rotate), Rotation.y, Rotation.z, 2, 1);
-			break;
+			ControlWhileHeld::ctrlDown() ? Rotation.x-- : Rotation.x++;
+				break;
 		case Roll:
-			ENTITY::SET_ENTITY_ROTATION(Handle, Rotation.x, (Rotation.y + rotate), Rotation.z, 2, 1);
+			ControlWhileHeld::ctrlDown() ? Rotation.y-- : Rotation.y++;
 			break;
 		case Yaw:
-			ENTITY::SET_ENTITY_ROTATION(Handle, Rotation.x, Rotation.y, (Rotation.z + rotate), 2, 1);
-			break;
+			ControlWhileHeld::ctrlDown() ? Rotation.z-- : Rotation.z++;
+				break;
 		}
+
+		EntityEdit::setRotation(Handle, Rotation);
+
 	}
 	void AttachEntityToEntity(Entity fromHandle, Entity toHandle, Vector3 coords, int boneindex)
 	{
@@ -70,18 +72,19 @@ namespace EntityControl
 	{
 		g_fiber_pool->queue_job([=] {
 
-			Hash handleHash = ENTITY::GET_ENTITY_MODEL(Handle);
 			if (ENTITY::DOES_ENTITY_EXIST(Handle))
 			{
+				DeletePhase = true;
 				ENTITY::IS_ENTITY_ATTACHED(Handle) ? ENTITY::DETACH_ENTITY(Handle, false, true) : NULL;
-				ENTITY::DELETE_ENTITY(&(int)Handle);
-
+					EntityEdit::setCoords(Handle, { 0.f, 0.f, -500.f });//cant delete, oh will
+					EntityEdit::setNoLongerNeeded(Handle);
+				DeletePhase = false;
 			}
 		});
 	}
 	namespace quickFunction 
 	{
-		void Attach(Entity fromHandle, Entity toHandle, Vector3 coords = {0, 0, 0})
+		void Attach(Entity fromHandle, Entity toHandle, Vector3 coords)
 		{
 
 			AttachEntityToEntity(fromHandle, toHandle, coords, NULL);

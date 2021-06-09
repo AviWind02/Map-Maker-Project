@@ -136,21 +136,29 @@ namespace EntityEdit
 	{
 		return ENTITY::GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(entity, X, Y, Z);
 	}
-	bool isplayerinwater()
+	bool isPlayerInWater()
 	{
 		return ENTITY::IS_ENTITY_IN_WATER(PLAYER::PLAYER_PED_ID());
 	}
-	bool isentityinwater(Entity entity)
+	bool isEntityInWater(Entity entity)
 	{
 		return ENTITY::IS_ENTITY_IN_WATER(entity);
 	}
-	Vector3 playerPosition()
+	Vector3 getPlayerPosition()
 	{
 		return ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true);
 	}
-	void set_pos(Entity entity, Vector3 pos)
+	void setCoords(Entity entity, Vector3 pos)
 	{
 		ENTITY::SET_ENTITY_COORDS(entity, pos.x, pos.y, pos.z,
 			true, true, true, false);
+	}
+	Vector3 getRotation(Entity entity, int rotationOrder)
+	{
+		return ENTITY::GET_ENTITY_ROTATION(entity, rotationOrder);
+	}
+	void setRotation(Entity entity, Vector3 rotation, int rotationOrder)
+	{
+		ENTITY::SET_ENTITY_ROTATION(entity, rotation.x, rotation.y, rotation.z, rotationOrder, 1);
 	}
 }

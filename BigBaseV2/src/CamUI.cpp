@@ -13,6 +13,7 @@
 #include "EntityPool.h"
 #include "../CamControl.h"
 #include "../EntityControl.h"
+#include "../EditEntity.h"
 
 
 using namespace big;
@@ -65,7 +66,7 @@ namespace CamUI
 	void EntityPOS()
 	{
 		Vector3 Coords = ENTITY::GET_ENTITY_COORDS(ControlWhileHeld::LockedEntity, false);
-		Vector3 Rotation = ENTITY::GET_ENTITY_ROTATION(ControlWhileHeld::LockedEntity, 1);
+		Vector3 Rotation = EntityEdit::getRotation(ControlWhileHeld::LockedEntity);
 		Vector3 Speed = ENTITY::GET_ENTITY_SPEED_VECTOR(ControlWhileHeld::LockedEntity, true);
 		Vector3 forward = ENTITY::GET_ENTITY_FORWARD_VECTOR(ControlWhileHeld::LockedEntity);
 		float Heading = ENTITY::GET_ENTITY_HEADING(ControlWhileHeld::LockedEntity);
@@ -74,7 +75,7 @@ namespace CamUI
 
 
 
-		Infobox("Rotation(Roll, Pitch, Yaw):", (RemoveDPoint(Rotation.x, ", ") + RemoveDPoint(Rotation.y, ", ") + RemoveDPoint(Rotation.z)), 6);
+		Infobox("Rotation(Pitch, Roll, Yaw):", (RemoveDPoint(Rotation.x, ", ") + RemoveDPoint(Rotation.y, ", ") + RemoveDPoint(Rotation.z)), 6);
 		Infobox("Coords(XYZ):", (RemoveDPoint(Coords.x, ", ") + RemoveDPoint(Coords.y, ", ") + RemoveDPoint(Coords.z)), 7);
 		Infobox("Speed(XYZ):", (RemoveDPoint(Speed.x, ", ") + RemoveDPoint(Speed.y, ", ") + RemoveDPoint(Speed.z)), 8);
 		Infobox("Forward(XYZ):", (RemoveDPoint(forward.x, ", ") + RemoveDPoint(forward.y, ", ") + RemoveDPoint(forward.z)), 9);

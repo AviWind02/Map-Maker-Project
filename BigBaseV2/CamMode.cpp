@@ -108,9 +108,12 @@ namespace CamScript
 		}
 		void Tick()
 		{
-			forward();
-			backward();
-			setCamRotation();
+			//if (!ControlWhileHeld::LockMoveControl)
+			{
+				forward();
+				backward();
+				setCamRotation();
+			}
 		}
 	}
 

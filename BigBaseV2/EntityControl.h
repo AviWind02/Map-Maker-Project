@@ -10,7 +10,7 @@ namespace EntityControl
 
 	void holdEntity(Entity Handle, float distance = entityDistanceFromCam, float Zhight = hightFromCrosshire);
 	Vector3 getRotation(Entity Handle);
-	void EditEntityRotation(Entity Handle, Rotation rotation, float rotate);
+	void EditEntityRotation(Entity Handle, Rotation rotation);
 	void AttachEntityToEntity(Entity fromHandle, Entity toHandle, Vector3 coords, int boneindex);
 	extern bool EntityLocked;
 	void Delete(Entity Handle);

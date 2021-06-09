@@ -26,37 +26,32 @@ namespace ControlWhileHeld
 			LockedEntity = Cast::getCastedEntity();
 		
 	}
+	bool LockMoveControl;
+	bool ctrlDown()
+	{
+		return GetAsyncKeyState(VK_LCONTROL);
+	}
 	Vector3 Rotation;
 	void editEntityRoll()
 	{
-		if (GetAsyncKeyState(VK_LSHIFT))
-			if (GetAsyncKeyState(VK_KEY_A))
-				EntityControl::EditEntityRotation(LockedEntity, EntityControl::Roll, Rotation.x += 1);
-			else
-				Rotation.x = 0;
+			if (GetAsyncKeyState(VK_KEY_Q))
+				EntityControl::EditEntityRotation(LockedEntity, EntityControl::Roll);
 
 	}
 	void editEntityPitch()
 	{
-		if (GetAsyncKeyState(VK_LSHIFT))
-			if (GetAsyncKeyState(VK_KEY_W))
-				EntityControl::EditEntityRotation(LockedEntity, EntityControl::Pitch, Rotation.y += 1);
-			else
-				Rotation.y = 0;
+			if (GetAsyncKeyState(VK_KEY_E))
+				EntityControl::EditEntityRotation(LockedEntity, EntityControl::Pitch);
 	}
 	void editEntityYaw()
 	{
-		if (GetAsyncKeyState(VK_LSHIFT))
-			if (GetAsyncKeyState(VK_KEY_S))
-				EntityControl::EditEntityRotation(LockedEntity, EntityControl::Yaw, Rotation.z += 1);
-			else
-				Rotation.z = 0;
+			if (GetAsyncKeyState(VK_KEY_R))
+				EntityControl::EditEntityRotation(LockedEntity, EntityControl::Yaw);
 	}
 	void deleteEntity()
 	{
-		if (GetAsyncKeyState(VK_LSHIFT))
-			if (GetAsyncKeyState(VK_KEY_D))
-				EntityControl::Delete(LockedEntity);
+			if (GetAsyncKeyState(VK_KEY_F))
+				EntityControl::Delete(Cast::getCastedEntity());
 	}
 	void Tick()
 	{

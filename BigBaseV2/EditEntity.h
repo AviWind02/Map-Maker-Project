@@ -27,8 +27,11 @@ namespace EntityEdit
 	bool is_it_there(Entity entity, Vector3 pos);
 	Vector3 GetOffsetInWorldCoords(Entity entity, Vector3 offset);
 	Vector3 GetOffsetInWorldCoords(Entity entity, float X, float Y, float Z);
-	bool isplayerinwater();
-	bool isentityinwater(Entity entity);
-	Vector3 playerPosition();
-	void set_pos(Entity entity, Vector3 pos);
+	bool isPlayerInWater();
+	bool isEntityInWater(Entity entity);
+	Vector3 getPlayerPosition();
+	void setCoords(Entity entity, Vector3 pos);
+	Vector3 getRotation(Entity entity, int rotationOrder = 2);
+	void setRotation(Entity entity, Vector3 rotation, int rotationOrder = 2);
+
 }
