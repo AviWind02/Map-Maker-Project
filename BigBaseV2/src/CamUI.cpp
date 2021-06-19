@@ -41,10 +41,10 @@ namespace CamUI
 	}
 	void pool()
 	{
-		Infobox("Total Pool:", std::to_string(EntityPool::getTotalPoolNum()), 0);
-		Infobox("Object Pool:", std::to_string(EntityPool::getObjectPoolNum()), 1);
-		Infobox("Vehicle Pool:", std::to_string(EntityPool::getVehiclePoolNum()), 2);
-		Infobox("Ped Pool:", std::to_string(EntityPool::getPedPoolNum()), 3);
+		Infobox("Total Pool:", std::to_string(EntityPool::getTotalPoolNum()) + "/2046", 0);
+		Infobox("Object Pool:", std::to_string(EntityPool::getObjectPoolNum()) + "/682", 1);
+		Infobox("Vehicle Pool:", std::to_string(EntityPool::getVehiclePoolNum()) + "/682", 2);
+		Infobox("Ped Pool:", std::to_string(EntityPool::getPedPoolNum()) + "/682", 3);
 	}
 	void EntityAttach()
 	{

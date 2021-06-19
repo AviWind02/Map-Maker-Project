@@ -95,11 +95,6 @@ namespace Objectcreator
 				AddLog("Ped not found");
 		});
 	}
-	bool in_array(const std::string& value, const std::vector<std::string>& array)
-	{
-		return std::find(array.begin(), array.end(), value) != array.end();
-	}
-
 	bool isPedInList(const char* Entity)
 	{
 		for(int i = 0; i < 857; i++)

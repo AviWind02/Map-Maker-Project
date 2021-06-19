@@ -13,22 +13,23 @@
 
 using namespace big;
 
-int ObjectLimt = 2048;
 
-int ObjectPool;
-int VehiclePool;
-int PedPool;
-
-const char* ObjectPoolName[2048];
-const char* VehiclePoolName[2048];
-const char* PedPoolName[2048];
-
-Object ObjectSpawned[2048];
-Vehicle VehicleSpawned[2048];
-Ped PedSpawned[2048];
 
 namespace EntityPool
-{
+{// i may be wrong but each entity maybe about 1000 Kibibit
+	int ObjectLimt = 2046;//Mb i might be wrong tho
+
+	int ObjectPool;
+	int VehiclePool;
+	int PedPool;
+
+	const char* ObjectPoolName[682];
+	const char* VehiclePoolName[682];
+	const char* PedPoolName[682];
+
+	Object ObjectSpawned[682];
+	Vehicle VehicleSpawned[682];
+	Ped PedSpawned[682];
 
 	void setObjectPool(const char* prop, Object object)
 	{

@@ -31,22 +31,21 @@ namespace ControlWhileHeld
 	{
 		return GetAsyncKeyState(VK_LCONTROL);
 	}
-	Vector3 Rotation;
 	void editEntityRoll()
 	{
 			if (GetAsyncKeyState(VK_KEY_Q))
-				EntityControl::EditEntityRotation(LockedEntity, EntityControl::Roll);
+				EntityControl::EditEntityRotation(LockedEntity, EntityControl::Roll, ctrlDown());
 
 	}
 	void editEntityPitch()
 	{
 			if (GetAsyncKeyState(VK_KEY_E))
-				EntityControl::EditEntityRotation(LockedEntity, EntityControl::Pitch);
+				EntityControl::EditEntityRotation(LockedEntity, EntityControl::Pitch, ctrlDown());
 	}
 	void editEntityYaw()
 	{
 			if (GetAsyncKeyState(VK_KEY_R))
-				EntityControl::EditEntityRotation(LockedEntity, EntityControl::Yaw);
+				EntityControl::EditEntityRotation(LockedEntity, EntityControl::Yaw, ctrlDown());
 	}
 	void deleteEntity()
 	{

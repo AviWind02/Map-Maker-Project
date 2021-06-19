@@ -16,6 +16,7 @@ namespace EntityEdit
 		bool explosionProof, bool collisionProof, bool meleeProof,
 		bool steamProof, bool smokeProof, bool drownProof);
 	void setVisible(Entity handle, bool visible);
+	void setVisible(Entity handle, bool visible);
 	void setVelocity(Entity handle, Vector3 velocity);
 	void setGravity(Entity handle, bool gravity);
 	void setLOD(Entity handle, int LOD);
@@ -33,5 +34,6 @@ namespace EntityEdit
 	void setCoords(Entity entity, Vector3 pos);
 	Vector3 getRotation(Entity entity, int rotationOrder = 2);
 	void setRotation(Entity entity, Vector3 rotation, int rotationOrder = 2);
+	Vector3 offsetFromEntityGivenWorld(Entity entity, Vector3 coord);
 
 }

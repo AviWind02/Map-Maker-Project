@@ -157,6 +157,7 @@
     <ClInclude Include="CamControl.h" />
     <ClInclude Include="EditEntity.h" />
     <ClInclude Include="EntityControl.h" />
+    <ClInclude Include="EntityMenu.h" />
     <ClInclude Include="ObjectCreator.h" />
     <ClInclude Include="PedList.h" />
     <ClInclude Include="PropList.h" />
@@ -220,6 +221,7 @@
     <ClCompile Include="CamMode.cpp" />
     <ClCompile Include="EditEntity.cpp" />
     <ClCompile Include="EntityControl.cpp" />
+    <ClCompile Include="EntityMenu.cpp" />
     <ClCompile Include="ObjectCreator.cpp" />
     <ClCompile Include="src\CamUI.cpp" />
     <ClCompile Include="src\common.cpp">

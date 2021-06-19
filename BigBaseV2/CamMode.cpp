@@ -89,7 +89,7 @@ namespace CamScript
 			CameraRotation = CAM::GET_GAMEPLAY_CAM_ROT(0);
 			CAM::SET_CAM_ROT(cam, CameraRotation.x, CameraRotation.y, CameraRotation.z, 0);
 		}
-		void forward()
+		void backward()
 		{
 			if (IsKeyDown(VK_KEY_S))
 			{
@@ -97,7 +97,7 @@ namespace CamScript
 				setCamCoord();
 			}
 		}
-		void backward()
+		void forward()
 		{
 			if (IsKeyDown(VK_KEY_W))
 			{

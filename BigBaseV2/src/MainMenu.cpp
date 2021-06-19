@@ -11,7 +11,7 @@
 #include "./CamUI.h"
 #include "../CamControl.h"
 #include "./EntityPool.h"
-
+#include "../EntityMenu.h"
 using namespace big;
 
 bool FirstLoad;
@@ -49,10 +49,12 @@ void MainMenuBase()
         if (ImGui::Button("Stop CamTick"))
         {
             CamMode::stopTick();
-            CamTicked = false;
+            CamTicked = false; 
         }
         if (ImGui::Button("Spawn object"))
-            Objectcreator::spawnEntity("prop_windmill_01");
+            Objectcreator::spawnEntity("vw_prop_casino_art_statue_01a");
+        if (ImGui::Button("Spawn object2"))
+            Objectcreator::spawnEntity("vw_prop_casino_art_statue_02a");
         if (ImGui::Button("Spawn Vehicle"))
             Objectcreator::spawnEntity("adder");
         if (ImGui::Button("Spawn ped"))
@@ -61,6 +63,7 @@ void MainMenuBase()
         CamUI::Tick();
         ControlWhileHeld::Tick();
         EntityPool::DevBlock();
+        EntityMenu::TestMenu::Tick();
     }
     ImGui::PopStyleColor();
     ImGui::End();

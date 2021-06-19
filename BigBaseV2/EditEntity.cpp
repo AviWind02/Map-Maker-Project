@@ -161,4 +161,9 @@ namespace EntityEdit
 	{
 		ENTITY::SET_ENTITY_ROTATION(entity, rotation.x, rotation.y, rotation.z, rotationOrder, 1);
 	}
+	Vector3 offsetFromEntityGivenWorld(Entity entity, Vector3 coord)
+	{
+		return ENTITY::GET_OFFSET_FROM_ENTITY_GIVEN_WORLD_COORDS(entity, coord.x, coord.y, coord.z);
+
+	}
 }

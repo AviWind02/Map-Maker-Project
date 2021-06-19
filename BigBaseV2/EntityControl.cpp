@@ -34,29 +34,20 @@ namespace EntityControl
 		if (!DeletePhase)
 			ENTITY::SET_ENTITY_COORDS_NO_OFFSET(Handle, holdingPos.x, holdingPos.y, (holdingPos.z + Zhight), 1, 1, 1);
 	}
-	Vector3 getRotation(Entity Handle)
-	{
-		Vector3 Rotation = {
-			ENTITY::GET_ENTITY_PITCH(Handle),
-			ENTITY::GET_ENTITY_ROLL(Handle),
-			ENTITY::GET_ENTITY_HEADING(Handle)//yaw
-		};
-		return Rotation;
-	} 
 
-	void EditEntityRotation(Entity Handle, Rotation rotation)  
+	void EditEntityRotation(Entity Handle, Rotation rotation, bool toggle)  
 	{
 		Vector3 Rotation = EntityEdit::getRotation(Handle);
 		switch (rotation)
 		{
 		case Pitch: 
-			ControlWhileHeld::ctrlDown() ? Rotation.x-- : Rotation.x++;
+			toggle ? Rotation.x-- : Rotation.x++;
 				break;
 		case Roll:
-			ControlWhileHeld::ctrlDown() ? Rotation.y-- : Rotation.y++;
+			toggle ? Rotation.y-- : Rotation.y++;
 			break;
 		case Yaw:
-			ControlWhileHeld::ctrlDown() ? Rotation.z-- : Rotation.z++;
+			toggle ? Rotation.z-- : Rotation.z++;
 				break;
 		}
 
@@ -65,8 +56,11 @@ namespace EntityControl
 	}
 	void AttachEntityToEntity(Entity fromHandle, Entity toHandle, Vector3 coords, int boneindex)
 	{
+		g_fiber_pool->queue_job([=] {
 		bool IsPed = ENTITY::IS_ENTITY_A_PED(fromHandle);
 		ENTITY::ATTACH_ENTITY_TO_ENTITY(fromHandle, toHandle, boneindex, coords.x, coords.y, coords.z, NULL, NULL, NULL, NULL, false, true, IsPed, NULL, NULL);
+		});
+
 	}
 	void Delete(Entity Handle)
 	{
